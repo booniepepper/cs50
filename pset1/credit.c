@@ -29,7 +29,7 @@ bool is_cc(long long cc)
     //newline();
     //printf("Has %i digits, leading two are %i.\n", digit_count, lead_digits);
     
-    if(is_known_cc(digit_count, lead_digits))
+    if(is_cc && is_known_cc(digit_count, lead_digits))
     {
         return true;
     }
