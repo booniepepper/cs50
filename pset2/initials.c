@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <string.h>
 #include <cs50.h>
 
 // http://docs.cs50.net/problems/initials/more/initials.html
