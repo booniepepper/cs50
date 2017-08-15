@@ -1,0 +1,12 @@
+45699,45700c45699,45700
+< TIME IN load:         0.10
+< TIME IN check:        0.54
+---
+> TIME IN load:         0.02
+> TIME IN check:        0.67
+45702,45703c45702,45703
+< TIME IN unload:       0.06
+< TIME IN TOTAL:        0.69
+---
+> TIME IN unload:       0.02
+> TIME IN TOTAL:        0.71

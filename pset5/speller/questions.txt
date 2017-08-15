@@ -1,0 +1,7 @@
+0.  an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
+1.  returns resource usage measurements
+2.  16 members - two of those are other structs
+3.  i'm not 100% sure, but i think a struct in reality is just a set of pointers to its child variables, so passing by reference means we can dereference its child variables
+4.  the for loop iterates on every character in the loaded file one-by-one. it builds words by filling in the "word" char array from the beginning for each alphabet or apostrophe character. if a word starts with an apostrophe or contains a number, it's ignored and we continue on. otherwise, we finish the word by putting a null terminator '\0' in it to signify that's the end of the word for anything that will use it, increments the word count, and then checks for a misspelling.
+5.  fgetc() only requires you to allocate space for a single character per read. if you were reading entire strings, you'd be getting lines of text (e.g. separated by newline, so a whole paragraph = 1 line) and have to worry about allocating/freeing memory each time, as well as handling splitting that out into the individual words and iterating on those
+6.  changing the dictionary or word being checked inside one of these methods would defeat the purpose - they need to be "constant" within the scope of those methods

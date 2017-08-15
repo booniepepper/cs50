@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{user.username}}'s Transaction History
+{% endblock %}
+
+{% block main %}
+    <h2>
+        History for {{user.username}}
+    </h2>
+    <table class="table transaction-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Stock Symbol</th>
+                <th>Type</th>
+                <th>Shares</th>
+                <th>Price Per Share</th>
+                <th>Transaction Total</th>
+                <th>Date/Time Purchased</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if trans_len == 0 %}
+            <tr>
+                <td colspan="4" style="text-align:center;">
+                    <div class="alert alert-info">
+                        No transactions yet
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+        {% for transaction in transactions %}
+            <tr class="transaction-{{transaction.color}}">
+                <td>#{{transaction.id}}</td>
+                <td>{{transaction.symbol}}</td>
+                <td>{{transaction.type}}</td>
+                <td>{{transaction.pre}} {{transaction.shares}}</td>
+                <td>{{transaction.pre}} {{transaction.price}}</td>
+                <td>{{transaction.pre}} {{transaction.total}}</td>
+                <td>{{transaction.timestamp}}</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

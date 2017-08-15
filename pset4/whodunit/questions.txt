@@ -1,0 +1,12 @@
+1.  stdint.h is a library of cross-platform integer types that allows you to specify details like number of bits or performance
+2.  the point is to get/set a specific size (in bytes) of a signed/unsigned integer. this is especially useful when you know in a file how a specific value will be stored
+3.  BYTE: 1 byte, DWORD: 4 bytes, LONG: 4 bytes, WORD: 2 bytes
+4.  The first two bytes need to be the ascii characters "BM" (424d0a in hex)
+5.  bfSize is the size of the whole file, biSize is the size of the BITMAPINFOHEADER structure
+6.  if biHeight is negative, the bitmap definition starts in the top left
+7.  biBitCount defines the bits-per-pixel
+8.  fopen could return NULL if the read file doesn't exist, or if the user executing the script doesn't have permission to read/write the respective read/write file
+9.  we want to read the headers once each. the 1 is being passed as an argument which specifies "x many chunks"
+10. padding should equal 3 (bytes)
+11. fseek allows you to put the pointer in a file at any position (i.e. for reading in an order that isn't first-to-last, or skipping sections)
+12. SEEK_CUR is the "seek cursor" which is the place in the file you're currently reading from already

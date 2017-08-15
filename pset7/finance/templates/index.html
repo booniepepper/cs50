@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{user.username}}'s Portfolio
+{% endblock %}
+
+{% block main %}
+    <h2>
+        Portfolio for {{user.username}}
+    </h2>
+    <p>
+        Your available funds: {{user.cash}}
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Owned Shares</th>
+                <th>Current Price</th>
+                <th>Current Total Value</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if trans_len == 0 %}
+            <tr>
+                <td colspan="4" style="text-align:center;">
+                    <div class="alert alert-info">
+                        No transactions yet
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+        {% for transaction in transactions %}
+            <tr>
+                <td>{{transaction.symbol}}</td>
+                <td>{{transaction.shares}}</td>
+                <td>{{transaction.price}}</td>
+                <td>{{transaction.total}}</td>
+                <td>
+                    <form action="{{ url_for('buy') }}" method="post" class="form-inline">
+                        <fieldset>
+                            <input type="hidden" name="symbol" value="{{transaction.symbol}}"/>
+                            <div class="input-group">
+                                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="0" type="number"/>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">Buy</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ url_for('sell') }}" method="post" class="form-inline">
+                        <fieldset>
+                            <input type="hidden" name="symbol" value="{{transaction.symbol}}"/>
+                            <div class="input-group">
+                                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="0" type="number"/>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">Sell</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
